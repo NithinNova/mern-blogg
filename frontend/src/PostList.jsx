@@ -49,6 +49,7 @@ function PostList() {
         </button>
               
       </div>
+     
       {posts.length === 0 ? (
         <p className="text-center">No posts available</p>
       ) : (
