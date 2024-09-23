@@ -1,22 +1,22 @@
-import Post from '../models/Post.js';
+import postModel  from "../models/post.model.js";
 
 // Create Post
 export const createPost = async (req, res) => {
   const { title, content } = req.body;
-  const post = new Post({ title, content, author: req.user.userId });
+  const post = new postModel({ title, content, author: req.user.userId });
   await post.save();
   res.json(post);
 };
 
 // View All Posts
 export const getPosts = async (req, res) => {
-  const posts = await Post.find({ approved: true }).populate('author');
+  const posts = await postModel.find().populate('author');
   res.json(posts);
 };
 
 // Edit Post
 export const editPost = async (req, res) => {
-  const post = await Post.findById(req.params.postId);
+  const post = await postModel.findById(req.params.postId);
   if (post.author.toString() !== req.user.userId) {
     return res.status(403).send('Not allowed');
   }
@@ -28,7 +28,7 @@ export const editPost = async (req, res) => {
 
 // Delete Post
 export const deletePost = async (req, res) => {
-  const post = await Post.findById(req.params.postId);
+  const post = await postModel.findById(req.params.postId);
   if (post.author.toString() !== req.user.userId) {
     return res.status(403).send('Not allowed');
   }
