@@ -2,6 +2,7 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import User from '../models/user.model.js';
+import { forgotPassword, logout, getAllUsers} from '../controllers/auth.controller.js';
 
 const router = express.Router();
 
@@ -24,6 +25,12 @@ router.post('/login', async (req, res) => {
 
   const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET);
   res.json({ token });
-});
 
+  // Forgot password route
+router.post('/forgot-password', forgotPassword);
+});
+router.post('/logout', logout);
+
+// Route to get all users (can restrict to admins only if needed)
+router.get('/users', getAllUsers);
 export default router;

@@ -1,12 +1,18 @@
 import jwt from 'jsonwebtoken';
 
-export default function authenticateUser(req, res, next) {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).send('Unauthorized');
+export const verifyToken = (req, res, next) => {
+  const token = req.headers['authorization'];
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) return res.status(401).send('Invalid token');
-    req.user = decoded;
+  if (!token) {
+    return res.status(403).send('No token provided.');
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.userId; // Attach the user ID to the request object
+    req.role = decoded.role;
     next();
-  });
-}
+  } catch (error) {
+    return res.status(401).send('Unauthorized.');
+  }
+};

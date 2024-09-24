@@ -4,7 +4,11 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
+  status: { type: String, default: 'active' },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
 }, { timestamps: true });
+
 
 const User = mongoose.model('User', userSchema);
 
