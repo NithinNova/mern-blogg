@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 function PostList() {
   const [posts, setPosts] = useState([]);
-  const navigate = useNavigate(); // Get the navigate function
+  const navigate = useNavigate(); 
 
   // Logout function
   const logout = () => {
-    localStorage.removeItem('token'); // Clear the JWT token
+    localStorage.removeItem('token'); 
     alert('You have been logged out');
-    window.location.href = '/login'; // Redirect to login page
+    window.location.href = '/login'; 
   };
   useEffect(() => {
     const fetchPosts = async () => {
@@ -47,7 +47,7 @@ function PostList() {
     <div className="container mx-auto mt-10">
       <h1 className="text-3xl font-bold mb-6 text-center">Blog - All Posts</h1>
       
-      {/* Logout Button */}
+      
       <div className="flex justify-center mb-6">
         <button
           onClick={logout}
@@ -57,7 +57,7 @@ function PostList() {
         </button>
       </div>
       
-      {/* Create Post Button */}
+      
       <div className="flex justify-center mb-6">
         <button
           onClick={handleCreatePost}

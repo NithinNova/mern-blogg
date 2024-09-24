@@ -54,10 +54,10 @@ export const forgotPassword = async (req, res) => {
 // Logout User
 export const logout = async (req, res) => {
   try {
-    // Extract the user ID from the token (assuming you're verifying the token in middleware)
-    const userId = req.userId; // Assuming req.userId is set by the auth middleware
+    
+    const userId = req.userId; 
 
-    // Update the user's status to 'logged out'
+    
     await User.findByIdAndUpdate(userId, { status: 'logged out' });
 
     res.json({
@@ -69,10 +69,10 @@ export const logout = async (req, res) => {
 };
 
 
-// Get All Users (Admin Feature)
+
 export const getAllUsers = async (req, res) => {
   try {
-    // Fetch only users whose status is 'active'
+    
     const users = await User.find({ status: 'active' });
 
     res.json(users);

@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   const handleForgotPassword = async (e) => {
     e.preventDefault();
 
-    // Check if both fields are filled
+    
     if (!username || !newPassword) {
       alert('Please fill in both username and new password');
       return;

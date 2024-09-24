@@ -5,7 +5,7 @@ import axios from 'axios';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // State for error message
+  const [errorMessage, setErrorMessage] = useState(''); 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -28,7 +28,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Error during login:', error);
-      setErrorMessage('Invalid username or password. Please try again.'); // Set error message
+      setErrorMessage('Invalid username or password. Please try again.'); 
     }
   };
 
@@ -55,14 +55,14 @@ const Login = () => {
             className="w-full px-4 py-2 border rounded-lg"
             placeholder="Enter your password"
           />
-          {errorMessage && ( // Display error message if it exists
+          {errorMessage && ( 
             <p className="text-red-500 text-sm mt-2">{errorMessage}</p>
           )}
         </div>
         <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg mb-4">
           Login
         </button>
-        {/* Add a link for Forgot Password */}
+        
         <div className="text-center">
           <Link to="/forgot-password" className="text-blue-500 hover:underline">
             Forgot Password?

@@ -5,7 +5,7 @@ import axios from 'axios';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('user'); // Default role is 'user'
+  const [role, setRole] = useState('user'); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -20,7 +20,7 @@ const Register = () => {
 
       if (response.status === 200) {
         alert('Registration successful!');
-        navigate('/login'); // Redirect to login page after successful registration
+        navigate('/login'); 
       }
     } catch (error) {
       console.error('Registration failed', error);

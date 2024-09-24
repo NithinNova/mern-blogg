@@ -31,6 +31,6 @@ router.post('/forgot-password', forgotPassword);
 });
 router.post('/logout', logout);
 
-// Route to get all users (can restrict to admins only if needed)
+
 router.get('/users', getAllUsers);
 export default router;

@@ -10,7 +10,7 @@ const CreatePost = () => {
     e.preventDefault();
 
     // Retrieve the token from localStorage (Ensure the key matches what you used when storing)
-    const token = localStorage.getItem('authToken');  // Use 'authToken' instead of 'token'
+    const token = localStorage.getItem('authToken');  
     console.log('Retrieved token from localStorage:', token);
 
     if (!token) {
@@ -24,7 +24,7 @@ const CreatePost = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`, // Use the retrieved token here
+          Authorization: `Bearer ${token}`, 
         },
         body: JSON.stringify({ title, content }),
       });
@@ -32,7 +32,7 @@ const CreatePost = () => {
       // Handle response
       if (response.ok) {
         console.log('Post created successfully');
-        navigate('/'); // Navigate after successful post creation
+        navigate('/'); 
       } else {
         const errorData = await response.json();
         console.error('Failed to create post:', errorData.message);
@@ -75,4 +75,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost; // Use ES module export
+export default CreatePost; 

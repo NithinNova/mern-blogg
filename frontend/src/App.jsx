@@ -6,7 +6,7 @@ import CreatePost from './CreatePost';
 import ForgotPassword from './Forgotpassword';
 import Login from './Login'; 
 import AdminDashboard from './AdminDashboard';
-import Register from './Register';  // Import the Register component
+import Register from './Register';  
 
 const App = () => {
   return (
